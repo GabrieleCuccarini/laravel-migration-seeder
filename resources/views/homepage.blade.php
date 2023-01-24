@@ -16,14 +16,40 @@
 </head>
 
 <body>
-
-    <main class="bg-light">
-        <div class="container">
-            <h1 class="display-5 fw-bold">Welcome to Laravel+Bootsrap 5</h1>
-            <button class="btn btn-primary btn-lg align-self-start" type="button">Example button</button>
-        </div>
-    </main>
-
+    <h1 class="display-5 fw-bold text-center mt-3">
+       Welcome to Laravel_Migration_Seeder
+   </h1>
+    <div class="container d-flex justify-content-center flex-wrap w90 mt-2">
+        @foreach ($trains as $train) 
+            @if ($train->data_di_partenza === '2023-01-24')
+                <div class="card mx-1 my-2 color" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Stazione di partenza: {{$train->stazione_di_partenza}}</h5>    
+                        <h5 class="card-title">Stazione di arrivo: {{$train->stazione_di_arrivo}}</h5>    
+                        <p class="card-text">Data di partenza: <b>{{$train->data_di_partenza}}</b></p>
+                        <p class="card-text">Orario di partenza: <b>{{$train->orario_di_partenza}}</b></p>
+                        <p class="card-text">Orario d'arrivo: <b>{{$train->orario_di_arrivo}}</b></p>
+                        <p class="card-text">Codice treno: <b>{{$train->codice_treno}}</b></p>
+                        <p class="card-text">Numero di carrozze: <b>{{$train->numero_di_carrozze}}</b></p>
+                        <p class="card-text">In orario: <b>
+                            @if ($train->in_orario === 1)
+                            true
+                            @else 
+                            false
+                            @endif
+                        </b></p>
+                        <p class="card-text red">Cancellato: <b>
+                            @if ($train->cancellato === 1)
+                            true
+                            @else 
+                            false
+                            @endif
+                        </b></p>
+                    </div>
+                </div>
+            @endif   
+        @endforeach
+    </div>
 </body>
 
 </html>

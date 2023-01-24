@@ -8,7 +8,7 @@ class TrainController extends Controller
 {
     public function fetch() {
         $trains = Train::all();
-        dump($trains);
+        // dump($trains);
         return view('homepage', [
             'trains' => $trains
         ]);
